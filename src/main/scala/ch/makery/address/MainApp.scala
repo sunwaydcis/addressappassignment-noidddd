@@ -1,10 +1,12 @@
 package ch.makery.address
+import ch.makery.address.model.Person
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.scene.Scene
 import scalafx.Includes._
-import scalafxml.core.{NoDependencyResolver, FXMLView, FXMLLoader}
+import scalafxml.core.{FXMLLoader, FXMLView, NoDependencyResolver}
 import javafx.{scene => jfxs}
+import scalafx.collections.ObservableBuffer
 
 object MainApp extends JFXApp {
 
@@ -27,6 +29,26 @@ object MainApp extends JFXApp {
       root = roots
     }
   }
+
+  /**
+   * The data as an observable list of Persons.
+   */
+
+  val personData = new ObservableBuffer[Person]()
+
+  /**
+   * Constructor
+   */
+
+  personData += new Person("Hans", "Muster")
+  personData += new Person("Ruth", "Mueller")
+  personData += new Person("Heinz", "Kurz")
+  personData += new Person("Cornelia", "Meier")
+  personData += new Person("Werner", "Meyer")
+  personData += new Person("Lydia", "Kunz")
+  personData += new Person("Anna", "Best")
+  personData += new Person("Stefan", "Meier")
+  personData += new Person("Martin", "Mueller")
 
   // actions for display person overview window
   def showPersonOverview() = {
